@@ -1,7 +1,9 @@
-from django.views.generic.base import View
-from django.shortcuts import render
+from django.views.generic.list import ListView
+
+from app.models import Task
 
 
-class HomeView(View):
-    def get(self, request):
-        return render(request, template_name="app/home.html")
+class AppListView(ListView):
+    model = Task
+    paginate_by = 10
+    template_name = "app/list.html"
